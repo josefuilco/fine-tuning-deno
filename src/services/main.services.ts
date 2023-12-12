@@ -2,10 +2,10 @@ import { parse } from "csv"; // Libreria para manejar archivos CSV
 import OpenAI from "openai"; // Libreria de OpenAI
 
 const currentDir = Deno.cwd(); // Para posicionarme en la ruta actual
-const CSV_PATH = `src/shared/data-set.csv`; // Ruta del CSV
-const JSONL_PATH = `${currentDir}/src/shared/data-set.jsonl`; // Ruta del JSONL
+const CSV_PATH = `src/shared/tu_archivo.csv`; // Ruta del CSV
+const JSONL_PATH = `${currentDir}/src/shared/tu_archivo.jsonl`; // Ruta del JSONL
 const client = new OpenAI({
-  apiKey: "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",
+  apiKey: "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",
 }); // La llave del cliente para
 const fileURL = new URL(`file://${JSONL_PATH}`); // Creo una URL para poder usar fetch
 
@@ -16,6 +16,7 @@ export const transformData = async function () {
 
   const JSONL_DATA: string = PARSED_DATA.map((row) => {
     const [question, answer] = row;
+    // console.log(question, answer);
     const JSON_DATA = `{"prompt": "${question}", "completion": "${answer} END"}`;
     return JSON_DATA;
   }).join("\r\n");

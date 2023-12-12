@@ -1,14 +1,14 @@
 import OpenAI from "openai";
 
 const client = new OpenAI({
-  apiKey: "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",
+  apiKey: "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",
 });
 
 export const createFineTune = async function (fileId: string) {
   try {
     const response = await client.fineTuning.jobs.create({
       training_file: fileId,
-      model: "gpt-3.5-turbo",
+      model: "davinci-002",
       suffix: "question-answer-01",
     });
     return response;
